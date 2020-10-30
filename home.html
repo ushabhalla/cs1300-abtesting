@@ -2,13 +2,195 @@
 
 <html>
   <head>
-    <title>INSERT TITLE HERE!</title>
+    <title>AB Testing</title>
     <link rel="stylesheet" href="index.css">
     <!-- TODO: add additional links here! e.g. fonts, icons, more stylesheets, etc. -->
+    <link rel="icon" type="image/png" href="images/bglogosmall.png">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
   </head>
 
   <body>
     <!-- TODO: put your HTML code here! -->
+    <script src= 
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
+        </script> 
+    <div class="sidenav">
+      <a href="#intro">Introduction</a>
+      <a href="#hypo">Hypotheses</a>
+      <a href="#data">Data Collection</a>
+      <a href="#stats">Statistics</a>
+      <a href="#conlusions">Conclusions</a>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+          <div class="intro" id="intro">
+                  
+                  <h1 id="header"> A/B Testing</h1>
+
+                  <div class="inner">
+                    
+                  <p> This project was completed for <a href="https://cs.brown.edu/courses/csci1300/">CS 1300: UI/UX</a> @ <a href = "https://www.brown.edu">Brown University</a>.
+                    The intent of the project was learn about A/B Testing by creating our owntests. I created two versions of <a href="https://sheltered-hollows-41393.herokuapp.com/">a cactus shop</a>, and had classmates order $150 worth of cacti on the site. Each user was randomly assigned one of the two versions of the site. I then analyzed the return rate and shopping times of all the users to determine if there were any signifacnt differences between the two for either of the sites. Scroll down to learn more!</p>
+                    
+                  </div>
+                  <hr>
+          </div>
+
+
+          <!-- Hypotheses -->
+          <div class="hypo" id="hypo">
+            <br>
+            <br>
+              <div id="h2">Hypotheses</div>
+              <div class="inner">
+                <br>
+                For each metric, H0 is the null hypothesis; HA is the alternative hypothesis.
+                <ul>
+                  <li>
+                    Time to Completion
+                    <ul>
+                      <li>
+                        Let tA and tB represent the average time to completion for site A and site B, respectively. I expect site B to be faster to complete than site A since more plants and "add to cart" buttons are visible on the page at any time, so it is easier to order more plants in a lower time. 
+                        I therefore conduct a 1-sided t-test where the null hypothesis is that site A and site B’s average time to completion are the same, and the alternative hypothesis is that site A’s average time to completion is greater than site B’s.
+                      </li>
+                      <li>
+                        H0 :  tA = tB
+                      </li>
+                      <li>
+                        HA :  tA > tB 
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    Return Rate
+                    <ul>
+                      <li>
+                        Let rA and rB represent the total return rate for site A and site B, respectively. Let  nrA and nrB represent the total non-return rates for site A and site B.  Since there are no strong indications that we expect a specific one of the sites to generate a greater return rate over the other, I conduct a chi-squared test for homogeneity where the alternative hypothesis is that the total return rates for each site are not equal and/or the total non-return rates for each site are not equal. 
+                      </li>
+                      <li>
+                        The null hypothesis has two parts:
+                        <ul>
+                          <li>
+                            H0 :  rA = rB    and    nrA = nrB
+                          </li>
+                          <li>
+                            HA :  rA ≠ rB   and/or nrA ≠ nrB
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        HA :  At least one of the two parts null hypothesis parts is false. <br>
+                        That is, num_returnA ≠ num_returnB    and/or   num_no_returnA ≠ num_no_returnB
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+                
+              </div>
+              <hr>
+          </div>
+
+          <!-- Data  -->
+          <div class="data" id="data">
+            <!-- observations go here! -->
+            <br>
+            <br>
+            <div id="h2">Data Collection</div>
+              <div class="inner">
+                <p>
+                  Collecting the data for this assignment was fortunately not very difficult. Students from my class used my site to order cacti during their lab sections for the course. I was fortunately able to collect afrom 21 different users. While that number is not ideal (most statistical assumptions require a dataset of more than 40 data points), this was sufficient for the learning purposes of this project. You can view the logs here [<a href="/filteredlog.txt">.txt</a>, <a href="/myfilteredlog.csv">.csv</a>].
+                </p>
+                
+              </div>
+              <hr>
+          </div>
+
+          <!-- Statistics -->
+          <div class="stats" id="stats">
+            <br>
+            <br>
+              <div id="h2">Statistics</div>
+                <div class="inner">
+                  <p>These are the scripts I used to perform the analysis! [<a href="/abtesting.py">.py</a>, <a href="abtesting_data.py"> data</a>]. </p>
+                  <p>After running the scripts, I received the following values:
+                    <ul>
+                      <li>
+                        Time to completion 
+                        <ul>
+                          <li>
+                            t-score: 1.0051240876344087
+                          </li>
+                          <li>
+                            p-value: 0.16926919440240018
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        Return Rate 
+                        <ul>
+                          <li>
+                            chi squared score: 0.18181818181818182
+                          </li>
+                          <li>
+                            p-value: 0.6698153575994166
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </p>
+                    
+                </div>
+                <p> Since the p-value for the time to completion t-test (~0.169) was greater than any conventional level of significance (0.1, 0.05, or 0.01), I fail to reject the null hypothesis that . That is, the time to completion for site A and site B were not statistically different (at the 0.1, 0.05, or 0.01 levels of significance).
+                  <br><br>
+                  Additionally, since the p-value for the return rate chi-squared test (~0.669) was greater than any conventional level of significance (0.1, 0.05, or 0.01), I fail to reject the null hypothesis that the return rates for site A and B are equal, suggesting that these rates are not statistically different (at the 0.1, 0.05, or 0.01 levels of significance).
+                  </p>
+                <hr>
+          </div>
+
+    
+          <!-- Conclusions -->
+          <div class="conclusions" id="conclusions">
+            <br>
+            <br>
+            <div id="h2">Conclusions</div>
+            <div class="inner">
+              <img src="abinfographic.png"> <br>
+              Takeaways<br>
+              <ul>
+                <li>
+                  Our results provide initial evidence that page compactness and font may not strongly affect the time it takes to buy cacti or whether or not a user returns to the shopping page.
+                </li>
+                <li>
+                  <p>The tests were limited by the <b>small sample size ( < 25)</b>, which means that an accurate statistical result cannot be guaranteed. They were also limited by the fact that those participating in the tests were <b>aware</b> of what they were doing, and therefore did not act as a good example of users shopping from the site. Instead, their own personal motivations (to order the cacti as quickly as they could) could affect both dependent variables that were observed.</p>
+                </li>
+                <li>
+                  In general, the results tell us that layout and font/aesthetics don’t really matter, but from the limitation mentioned above, we should assume that the results are not accurate, and that design principles still do impact interactions with sites. 
+                </li>
+              </ul>
+              <p>I had a lot of fun with this project, and learnt a lot about a/b testing and statistics! I hope you enjoyed reading through my process and learned a couple things along the way!
+              
+            </div>
+            <hr>
+          </div>
+
+      </div>
+
+      <script>
+        $(document).ready(function () { 
+  
+          $('.sidenav > a') 
+                  .click(function (e) { 
+              $('.sidenav > a') 
+                  .removeClass('active'); 
+              $(this).addClass('active'); 
+          }); 
+        }); 
+        </script>
+
+
   </body>
 </html>
+<!doctype html>

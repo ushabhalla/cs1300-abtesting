@@ -1,1 +1,115 @@
 /* Put your style information here! */
+/* Put your style information here! */
+/* Put your style information here! */
+/* font-family: 'VT323', monospace; */
+@import url('https://fonts.googleapis.com/css?family=VT323');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Epilogue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #f7f5ff;
+    color: #04002e;
+    font-size: 22px;
+  }
+
+  #h2 {
+      font-weight: 700;
+      font-size: 25px;
+  }
+  #h3 {
+    font-weight: 600;
+  }
+  
+  a {
+      color: #04002ee1;
+  }
+  a:hover {
+      color: #241f5473;
+  }
+  .sidenav {
+    width: 150px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #04002e;
+    color: white;
+    overflow-x: hidden;
+    padding: 8px 0;
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #f7f5ff;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color:  #f7f5ff;
+    background-color: #241f54;
+  }
+
+  .sidenav a.active {
+    color: #04002e;
+    background-color: lightsteelblue;  
+  }
+
+  img {
+      width: 50%;
+      height: auto;
+  }
+  .inner {
+      padding-left: 3%;
+      padding-bottom: 3%;
+  }
+  .main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  .content {
+      padding-left: 20%;
+      padding-right: 15%;
+      padding-top: 3%;
+      padding-bottom: 5%;
+  }
+  hr {
+      width: 100%;
+  }
+  
+  @media screen and (max-width: 450px) {
+    body {
+        width:100vw;
+    }
+    .sidenav {
+        padding-top: 1%;
+        padding-left: 1%;
+        position: fixed;
+    }
+    .sidenav a {
+        font-size: 14px;
+    }
+    .content {
+        padding-left: 60%;
+        padding-right: 5%;
+        padding-top: 3%;
+        padding-bottom: 5%;
+        width: 120%;
+    }
+  }
+
+
+
+
+
+
+
+
+
